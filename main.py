@@ -17,16 +17,22 @@ neural_network.add_neuron(2, "sigmoid")
 output_classes = []
 print(len(train))
 for item in train.values:
-	#item[:len(item)-1]
-	neural_network.train(item[:len(item)-1])
-	
-	output_classes.append(item[len(item)-1])
+    #item[:len(item)-1]
+    neural_network.train(item[:len(item)-1])
+    
+    
+    output_classes.append(item[len(item)-1])
 neural_network.update_beta(output_classes) #create output_weights
 
 
+for item in h.test_dataset.values:
+    print(neural_network.predict(item[:len(item)-1]))
+    print(item[len(item)-1])
+
+
 if debug:
-	print("checking correctness of shapes:")
-	print(neural_network.input_weights[0].shape)
-	print(len(neural_network.input_weights))
-	print(neural_network.H.shape)
-	print(len(neural_network.bias))
+    print("checking correctness of shapes:")
+    print(neural_network.input_weights[0].shape)
+    print(len(neural_network.input_weights))
+    print(neural_network.H.shape)
+    print(len(neural_network.bias))
