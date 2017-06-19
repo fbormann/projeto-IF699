@@ -2,17 +2,17 @@ import pandas as pd
 from elm import ELM
 from helper import Helper
 
-datasets = ['datasets/wisconsin_transformed.csv', '']
+datasets = ['datasets/wisconsin_transformed.csv', 'datasets/abalone.csv', 'datasets/computer_revised.csv']
 debug = False
 h = Helper()
-h.get_dataset(datasets[0])
+h.get_dataset(datasets[2])
 
 train, test = h.split_dataset()
 
-neural_network = ELM(input_size = 9, output_layer_size = 2)
+neural_network = ELM(input_size = 7, output_layer_size = 1)
 
-neural_network.add_neuron(9, "linear")
-neural_network.add_neuron(2, "sigmoid")
+#neural_network.add_neuron(9, "linear")
+neural_network.add_neuron(100, "sigmoid")
 
 output_classes = []
 print(len(train))
